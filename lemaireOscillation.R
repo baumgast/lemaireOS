@@ -1,10 +1,6 @@
 lemaire = function(Time, State, Pars){
   with(as.list(c(State,Pars)),{
     
-#     m = 100
-#     i = 1:m
-#     A = -diag(m)
-    
     dx1  =  a200*x200	-	a1*x1
     dx2  =  a1	*	x1	-	a2	*	x2
     dx3	=	a2	*	x2	-	a3	*	x3
@@ -421,21 +417,3 @@ A = vector(length = 200)+1#seq(1.02,5, 0.02)
 pars  = c(a = A)
 
 out   = ode(func = lemaire, y = yini, parms = pars, times = times)
-
-xlim = c(0,max(times))
-ylim = c(0,12)
- 
-plot.new()
-plot.window(xlim,ylim)
-axis(1)
-axis(2)
-grid()
-box()
-
-title(main = '',
-      xlab = 'Time (min)',
-      ylab = 'Relative concentration (percent)')
-
-plots = seq(2,100,10)
-matpoints(out[,1],out[,plots], type = 'l', lty = 1)
-legend('topright', as.character(plots - 1), col = 1:length(plots),lty = 1, bty = 'n')
