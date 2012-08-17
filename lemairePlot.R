@@ -23,26 +23,26 @@ legend('topright', as.character(plots - 1), col = 1:length(plots),lty = 1, bty =
 total = 69
 m = dim(out)[2]-1
 
-m11 = 1+round(7/total*m)
-m12 = 1+round(10/total*m)
-ER1 = apply(out[,m11:m12],1,sum)
+m11e = 1+round(7/total*m)
+m12e= 1+round(10/total*m)
+ER1 = apply(out[,m11e:m12e],1,sum)
 
-m21 = 1+round(17/total*m)
-m22 = 1+round(27/total*m)
-ER2 = apply(out[,m21:m22],1,sum)
+m21e = 1+round(17/total*m)
+m22e = 1+round(27/total*m)
+ER2 = apply(out[,m21e:m22e],1,sum)
 
-m31 = 1+round(31/total*m)
-m32 = 1+round(41/total*m)
-ER3 = apply(out[,m31:m32],1,sum)
+m31e = 1+round(31/total*m)
+m32e = 1+round(41/total*m)
+ER3 = apply(out[,m31e:m32e],1,sum)
 
-m41 = 1+round(45/total*m)
-m42 = 1+round(48/total*m)
-ER4 = apply(out[,m41:m42],1,sum)
-ER1.4 = apply(out[,m11:m42],1,sum)
-m51 = 1+round(62/total*m)
-m52 = 1+round(65/total*m)
-ER5 = apply(out[,m51:m52],1,sum)
-ER1.5 = apply(out[,m11:m52],1,sum)
+m41e = 1+round(45/total*m)
+m42e = 1+round(48/total*m)
+ER4 = apply(out[,m41e:m42e],1,sum)
+ER1.4 = apply(out[,m11e:m42e],1,sum)
+m51e = 1+round(62/total*m)
+m52e = 1+round(65/total*m)
+ER5 = apply(out[,m51e:m52e],1,sum)
+ER1.5 = apply(out[,m11e:m52e],1,sum)
 
 #Pol II
 m11 = 1+round(21/total*m)
