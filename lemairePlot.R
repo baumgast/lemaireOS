@@ -67,7 +67,7 @@ m11 = 1+round(52/total*m)
 m12 = 1+round(62/total*m)
 HDAC = apply(out[,m11:m12],1,sum)
 #------------------------------------------------------------------------------
-par(mfrow = c(1,1))
+par(mfrow = c(4,1))
 
 xlim = range(out[,1])
 ylim = c(0,100)
@@ -97,6 +97,7 @@ plot(out[,1],Pol1, type = 'l', ylim = ylim, col = 'orangered',
      main = 'Pol II',
      xlab = 'time (min)',
      ylab = '% of bound promoters')
+grid()
 points(out[,1],Pol2,type = 'l', col = 'orangered1')
 points(out[,1],Pol1+Pol2, type = 'l')
 #------------------------------------------------------------------------------
@@ -104,5 +105,34 @@ plot(out[,1],TRIP1, type = 'l', col = 'orangered', ylim = ylim,
      main = 'TRIP1',
      xlab = 'time (min)',
      ylab = '% of bound promoters')
+grid()
 points(out[,1],TRIP2, type = 'l', col = 'orangered')
 points(out[,1], TRIP1+TRIP2,type = 'l', col = 'black')
+#------------------------------------------------------------------------------
+#HDAC
+plot(out[,1],HDAC,type = 'l', ylim = ylim,
+     main = 'TRIP1',
+     xlab = 'time (min)',
+     ylab = '% of bound promoters')
+grid()
+#------------------------------------------------------------------------------
+par(mfrow = c(1,1))
+
+plot.new()
+plot.window(xlim,ylim)
+axis(1)
+axis(2)
+grid()
+box()
+
+title(main = 'ER-alpha, Pol II, TRIP1, HDAC',
+      xlab = 'Time (min)',
+      ylab = '% bound promoters')
+
+points(out[,1],ER1+ER2+ER3+ER4+ER5, type = 'l')
+points(out[,1],Pol2+Pol1,type = 'l', col = 'orangered1')
+points(out[,1], TRIP1+TRIP2,type = 'l', col = 'skyblue4')
+points(out[,1],HDAC,type = 'l', col = 'magenta')
+
+legend(x = 150,y = 100, c('ER-alpha','Pol II','TRIP1','HDAC'), lty = c(1,1,1,1),
+       col = c('black','orangered1','skyblue4','magenta'), bty = 'n')

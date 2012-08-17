@@ -16,7 +16,12 @@ points(Time,Era, pch = 19)
 
 m = dim(out)[2] - 1
 t = Time[which(Time > 35)]
-rows = which(out[,1] == Time)
+Match = match(out[,1], t)
+rows = which(!is.na(Match))
+
+count = 0
 for (i in 1:m) {
-  
+  for (j in 1:(m-i)) {
+    count = count + 1
+  }
 }
