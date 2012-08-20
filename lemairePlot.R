@@ -69,7 +69,7 @@ HDAC = apply(out[,m11:m12],1,sum)
 #------------------------------------------------------------------------------
 par(mfrow = c(4,1))
 
-xlim = range(out[,1])
+xlim = c(40,180)#range(out[,1])[2])
 ylim = c(0,100)
 
 plot.new()
@@ -125,7 +125,7 @@ axis(2)
 grid()
 box()
 
-title(main = 'ER-alpha, Pol II, TRIP1, HDAC',
+title(#main = 'ER-alpha, Pol II, TRIP1, HDAC',
       xlab = 'Time (min)',
       ylab = '% bound promoters')
 
@@ -134,5 +134,5 @@ points(out[,1],Pol2+Pol1,type = 'l', col = 'orangered1')
 points(out[,1], TRIP1+TRIP2,type = 'l', col = 'skyblue4')
 points(out[,1],HDAC,type = 'l', col = 'magenta')
 
-legend(x = 150,y = 100, c('ER-alpha','Pol II','TRIP1','HDAC'), lty = c(1,1,1,1),
+legend(x = 160,y = 100, c('ER-alpha','Pol II','TRIP1','HDAC'), lty = c(1,1,1,1),
        col = c('black','orangered1','skyblue4','magenta'), bty = 'n')
