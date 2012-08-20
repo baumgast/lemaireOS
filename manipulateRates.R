@@ -106,23 +106,15 @@ sumComponents = function(out) {
 
   return(ER1+ER2+ER3+ER4+ER5)
 }
+sumPol = function(out) {
+  m11 = 1+round(21/total*m)
+  m12 = 1+round(27/total*m)
+  Pol1 = apply(out[,m11:m12],1,sum)
+  
+  m21 = 1+round(34/total*m)
+  m22 = 1+round(45/total*m)
+  Pol2 = apply(out[,m21:m22],1,sum)
+  
+  return(Pol1+Pol2)
+}
 #-------------------------------------------------------------------------------
-t = out1[,1]
-
-xlim = c(40,180)
-ylim = c(0,100)
-
-plot.new()
-plot.window(xlim,ylim)
-axis(1)
-axis(2)
-grid()
-box()
-
-main(xab = 'Time (min)', ylab = '% bound promoters')
-
-points(t,sumComponents(out1), type = 'l')
-points(t,sumComponents(out2), type = 'l', col = 'lightblue')
-points(t,sumComponents(out3), type = 'l', col = 'steelblue')
-points(t,sumComponents(out4), type = 'l', col = 'royalblue')
-points(t,sumComponents(out5), type = 'l', col = 'darkblue')
