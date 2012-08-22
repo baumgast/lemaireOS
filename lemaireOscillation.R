@@ -405,16 +405,15 @@ lemaire = function(Time, State, Pars){
   })
 }
 
-library(deSolve)
-zero = c(x = vector(length = 200)*0)
-zero[1] = 100
-yini = zero
-times = seq(0,200,0.5)
-
-#define reaction rates, follow a poisson distribution
-#rand = rlnorm(200,0,1)
-A = vector(length = 200)+5#seq(1.02,5, 0.02)
-pars  = c(a = A)
-
-out   = ode(func = lemaire, y = yini, parms = pars, times = times)
-
+# library(deSolve)
+# zero = c(x = vector(length = 200)*0)
+# zero[1] = 100
+# yini = zero
+# times = seq(0,200,0.5)
+# 
+# #define reaction rates, follow a poisson distribution
+# #rand = rlnorm(200,0,1)
+# A = vector(length = 200)+5#seq(1.02,5, 0.02)
+# pars  = c(a = A)
+# 
+# out   = ode(func = lemaire, y = yini, parms = pars, times = times)

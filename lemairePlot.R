@@ -116,7 +116,7 @@ plot(out[,1],HDAC,type = 'l', ylim = ylim,
      ylab = '% of bound promoters')
 grid()
 #------------------------------------------------------------------------------
-par(mfrow = c(1,1))
+par(mfrow = c(1,1), cex = 1.2)
 
 plot.new()
 plot.window(xlim,ylim)
@@ -125,7 +125,7 @@ axis(2)
 grid()
 box()
 
-title(#main = 'ER-alpha, Pol II, TRIP1, HDAC',
+title(main = 'Time courses fitted to the data above',
       xlab = 'Time (min)',
       ylab = '% bound promoters')
 
@@ -134,5 +134,6 @@ points(out[,1],Pol2+Pol1,type = 'l', col = 'orangered1')
 points(out[,1], TRIP1+TRIP2,type = 'l', col = 'skyblue4')
 points(out[,1],HDAC,type = 'l', col = 'magenta')
 
-legend(x = 160,y = 100, c('ER-alpha','Pol II','TRIP1','HDAC'), lty = c(1,1,1,1),
+legend(x = 150,y = 100, c('ER-alpha','Pol II','TRIP1','HDAC'), lty = c(1,1,1,1),
        col = c('black','orangered1','skyblue4','magenta'), bty = 'n')
+#-------------------------------------------------------------------------------
