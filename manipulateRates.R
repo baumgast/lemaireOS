@@ -11,9 +11,15 @@ times = seq(0,1000,0.5)
 #define reaction rates, initially set all 5 min^-1
 A = vector(length = 200)+5
 
+#-------------------------------------------------------------------------------
+#solve for all rates fixed at a = 5
+pars  = c(a = A)
+
+out1   = ode(func = lemaire, y = yini, parms = pars, times = times)
+#-------------------------------------------------------------------------------
 #define the rates that are the first in a block of Er-alpha incorporating complexes
 total = 69
-m = dim(out)[2]-1
+m = dim(out1)[2]-1
 
 m11e = 1+round(7/total*m)
 m12e= 1+round(10/total*m)
@@ -29,20 +35,6 @@ m42e = 1+round(48/total*m)
 
 m51e = 1+round(62/total*m)
 m52e = 1+round(65/total*m)
-
-#-------------------------------------------------------------------------------
-pars  = c(a = A)
-
-#lower rate
-low = 5
-
-pars[m11e] = low
-pars[m21e] = low
-pars[m31e] = low
-pars[m41e] = low
-pars[m51e] = low
-
-out1   = ode(func = lemaire, y = yini, parms = pars, times = times)
 #-------------------------------------------------------------------------------
 pars  = c(a = A)
 
