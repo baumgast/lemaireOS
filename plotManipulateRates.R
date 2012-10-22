@@ -33,47 +33,64 @@ legend(x = 115, y = 105, c(paste('a = 1/min, mean Pol =', round(mPol3,2), '%'),
 #        col = c('black','lightblue', 'steelblue', 'royalblue', 'darkblue'), bty = 'n')
 #-------------------------------------------------------------------------------
 #plot the polymerase occupancy
-par(mfrow = c(1,1))
+par(mfrow = c(1,1), cex = 1.2)
 xlim = c(40,180)
 ylim = c(0,100)
 plot(t,sumPol(out1), type = 'l', xlim = xlim, ylim = ylim, lwd = 2,
      main = 'RNA pol, time evolution at different rates',
      xlab = 'Time (min)',
      ylab = '% bound promoters')
+grid()
 points(t,sumPol(out2), type = 'l', col = 'lightblue')
 points(t,sumPol(out3), type ='l' ,col = 'steelblue')
 points(t,sumPol(out4), type ='l' ,col = 'royalblue')
 points(t,sumPol(out5), type ='l' ,col = 'darkblue')
 
-legend(x = 160, y = 100, c('a = 5/min','a = 2.5/min', 'a = 1/min', 'a = 0.5/min', 'a = 0.1/min'), lwd = c(2,2,2,2,2), 
+legend(x = 40, y = 100, c('a = 5/min','a = 2.5/min', 'a = 1/min', 'a = 0.5/min', 'a = 0.1/min'), lwd = c(2,2,2,2,2), 
        col = c('black','lightblue', 'steelblue', 'royalblue', 'darkblue'), bty = 'n')
 
 #-------------------------------------------------------------------------------
 #compare the single components with its neighbours at different rates
 par(mfrow = c(5,1))
 ylim = c(0,80)
-plot(t,out1[,m11e], type = 'l', main='a = 5', ylim = ylim)
+xlim = c(0,200)
+plot(t,out1[,m11e], type = 'l', main='a = 5', ylim = ylim,
+     xlim = xlim,
+     xlab = 'Time (min)',
+     ylab = 'single factors')
 points(t,out1[,(m11e + 1)], type = 'l', col = 'red')
 points(t,out1[,(m11e + 2)], type= 'l', col = 'blue')
 
 #legend('topright', c(paste('x.',m11e,)))
 
-plot(t,out2[,m11e], type = 'l', main='a = 2.5', ylim = ylim)
+plot(t,out2[,m11e], type = 'l', main='a = 2.5', ylim = ylim,
+     xlim = xlim,
+     xlab = 'Time (min)',
+     ylab = 'single factors')
 points(t,out2[,(m11e + 1)], type = 'l', col = 'red')
 points(t,out2[,(m11e + 2)], type= 'l', col = 'blue')
 
 
-plot(t,out3[,m11e], type = 'l', main='a = 1', ylim = ylim)
+plot(t,out3[,m11e], type = 'l', main='a = 1', ylim = ylim,
+     xlim = xlim,
+     xlab = 'Time (min)',
+     ylab = 'single factors')
 points(t,out3[,(m11e + 1)], type = 'l', col = 'red')
 points(t,out3[,(m11e + 2)], type= 'l', col = 'blue')
 
 
-plot(t,out4[,m11e], type = 'l', main='a = 0.5', ylim = ylim)
+plot(t,out4[,m11e], type = 'l', main='a = 0.5', ylim = ylim,
+     xlim = xlim,
+     xlab = 'Time (min)',
+     ylab = 'single factors')
 points(t,out4[,(m11e + 1)], type = 'l', col = 'red')
 points(t,out4[,(m11e + 2)], type= 'l', col = 'blue')
 
 
-plot(t,out5[,m11e], type = 'l', main='a = 0.1', ylim = ylim)
+plot(t,out5[,m11e], type = 'l', main='a = 0.1', ylim = ylim,
+     xlim = xlim,
+     xlab = 'Time (min)',
+     ylab = 'single factors')
 points(t,out5[,(m11e + 1)], type = 'l', col = 'red')
 points(t,out5[,(m11e + 2)], type= 'l', col = 'blue')
 #-------------------------------------------------------------------------------
