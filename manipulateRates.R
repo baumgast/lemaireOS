@@ -39,13 +39,19 @@ m52e = 1+round(65/total*m)
 pars  = c(a = A)
 
 #lower rate
-low = 2.5
+low  = 2.5
+high = A[1]# + A[1]/low
 
 pars[m11e] = low
+pars[m12e] = high
 pars[m21e] = low
+pars[m22e] = high
 pars[m31e] = low
+pars[m32e] = high
 pars[m41e] = low
+pars[m42e] = high
 pars[m51e] = low
+pars[m52e] = high
 
 out2   = ode(func = lemaire, y = yini, parms = pars, times = times)
 #-------------------------------------------------------------------------------
@@ -53,12 +59,18 @@ pars  = c(a = A)
 
 #lower rate
 low = 1
+high = A[1]# + A[1]/low
 
 pars[m11e] = low
+pars[m12e] = high
 pars[m21e] = low
+pars[m22e] = high
 pars[m31e] = low
+pars[m32e] = high
 pars[m41e] = low
+pars[m42e] = high
 pars[m51e] = low
+pars[m52e] = high
 
 out3   = ode(func = lemaire, y = yini, parms = pars, times = times)
 #-------------------------------------------------------------------------------
@@ -66,12 +78,18 @@ pars  = c(a = A)
 
 #lower rate
 low = 0.5
+high = A[1]# + A[1]/low
 
 pars[m11e] = low
+pars[m12e] = high
 pars[m21e] = low
+pars[m22e] = high
 pars[m31e] = low
+pars[m32e] = high
 pars[m41e] = low
+pars[m42e] = high
 pars[m51e] = low
+pars[m52e] = high
 
 out4   = ode(func = lemaire, y = yini, parms = pars, times = times)
 #-------------------------------------------------------------------------------
@@ -79,94 +97,41 @@ pars  = c(a = A)
 
 #lower rate
 low = 0.1
+high = A[1]# + A[1]/low
 
 pars[m11e] = low
+pars[m12e] = high
 pars[m21e] = low
+pars[m22e] = high
 pars[m31e] = low
+pars[m32e] = high
 pars[m41e] = low
+pars[m42e] = high
 pars[m51e] = low
+pars[m52e] = high
 
 out5   = ode(func = lemaire, y = yini, parms = pars, times = times)
 #-------------------------------------------------------------------------------
+pars  = c(a = A)
 
-#summing certain components x_i
-#components:
-sumComponents = function(out) {
-  total = 69
-  m = dim(out)[2]-1
-  
-  m11e = 1+round(7/total*m)
-  m12e= 1+round(10/total*m)
-  ER1 = apply(out[,m11e:m12e],1,sum)
-  
-  m21e = 1+round(17/total*m)
-  m22e = 1+round(27/total*m)
-  ER2 = apply(out[,m21e:m22e],1,sum)
-  
-  m31e = 1+round(31/total*m)
-  m32e = 1+round(41/total*m)
-  ER3 = apply(out[,m31e:m32e],1,sum)
-  
-  m41e = 1+round(45/total*m)
-  m42e = 1+round(48/total*m)
-  ER4 = apply(out[,m41e:m42e],1,sum)
-  ER1.4 = apply(out[,m11e:m42e],1,sum)
-  m51e = 1+round(62/total*m)
-  m52e = 1+round(65/total*m)
-  ER5 = apply(out[,m51e:m52e],1,sum)
-  ER1.5 = apply(out[,m11e:m52e],1,sum)
+#lower rate
+low = 0.01
+high = A[1]# + A[1]/low
 
-  return(ER1+ER2+ER3+ER4+ER5)
-}
-sumPol = function(out) {
-  total = 69
-  m = dim(out)[2]-1
-  
-  m11 = 1+round(21/total*m)
-  m12 = 1+round(27/total*m)
-  Pol1 = apply(out[,m11:m12],1,sum)
-  
-  m21 = 1+round(34/total*m)
-  m22 = 1+round(45/total*m)
-  Pol2 = apply(out[,m21:m22],1,sum)
-  
-  return(Pol1+Pol2)
-}
+pars[m11e] = low
+pars[m12e] = high
+pars[m21e] = low
+pars[m22e] = high
+pars[m31e] = low
+pars[m32e] = high
+pars[m41e] = low
+pars[m42e] = high
+pars[m51e] = low
+pars[m52e] = high
+
+out6   = ode(func = lemaire, y = yini, parms = pars, times = times)
 #-------------------------------------------------------------------------------
-#calculate the mRNA content over time deterministically
-detRNA = function(transEff, time, death){
-  library(deSolve)
-  
-  #deterministic, via ode: dRNA = beta(t)(1-exp(-alpha*t))
-  #transcription rate beta, decay rate alpha
-  
-  mRNA = function(Time,State,Pars) {
-    with(as.list(c(State,Pars)), {
-      
-      dRNA = beta - alpha*RNA
-      
-      return(list(c(dRNA)))
-    })
-  }
-  
-  yini   = c(RNA = 0)
-  deltaT = diff(time)
-  RNA    = vector()
-  timeRNA = vector()
-  
-  for (i in 1:length(deltaT)) {
-    td  = seq(time[i],time[i+1],0.05)
-    pars = c(alpha = death, beta = transEff[i])
-    
-    rna = ode(func = mRNA, parms = pars, time = td, y = yini)  
-    
-    yini = rna[length(rna[,2]),2]
-    
-    timeRNA = c(timeRNA,td)
-    RNA = c(RNA,rna[,2])
-  }
-  return(data.frame(timeRNA,RNA))
-}
+
 
 #half life of the mRna
 tau = 420

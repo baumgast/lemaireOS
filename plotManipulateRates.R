@@ -51,48 +51,130 @@ legend(x = 40, y = 100, c('a = 5/min','a = 2.5/min', 'a = 1/min', 'a = 0.5/min',
 
 #-------------------------------------------------------------------------------
 #compare the single components with its neighbours at different rates
-par(mfrow = c(5,1))
+pdf('~/Desktop/lemaireOS/Figues/singleComponents.pdf', width = 11.7, height = 8)
+par(mfrow = c(2,3), cex = 1.0)
 ylim = c(0,80)
 xlim = c(0,200)
-plot(t,out1[,m11e], type = 'l', main='a = 5', ylim = ylim,
+plot(t,out1[,(m11e - 0)], type = 'l', main='a = 5', ylim = ylim,
      xlim = xlim,
      xlab = 'Time (min)',
      ylab = 'single factors')
+grid()
 points(t,out1[,(m11e + 1)], type = 'l', col = 'red')
 points(t,out1[,(m11e + 2)], type= 'l', col = 'blue')
+points(t,out1[,(m11e + 3)], type= 'l', col = 'seagreen')
+legend('topright', c('-1', '0','+1','+2'), lwd = 2, col = c('black','red','blue','seagreen'), bty = 'n')
 
-#legend('topright', c(paste('x.',m11e,)))
-
-plot(t,out2[,m11e], type = 'l', main='a = 2.5', ylim = ylim,
+plot(t,out2[,(m11e -0)], type = 'l', main='a = 2.5', ylim = ylim,
      xlim = xlim,
      xlab = 'Time (min)',
      ylab = 'single factors')
+grid()
 points(t,out2[,(m11e + 1)], type = 'l', col = 'red')
 points(t,out2[,(m11e + 2)], type= 'l', col = 'blue')
+points(t,out2[,(m11e + 3)], type= 'l', col = 'seagreen')
+legend('topright', c('-1', '0','+1','+2'), lwd = 2, col = c('black','red','blue','seagreen'), bty = 'n')
 
-
-plot(t,out3[,m11e], type = 'l', main='a = 1', ylim = ylim,
+plot(t,out3[,(m11e - 0)], type = 'l', main='a = 1', ylim = ylim,
      xlim = xlim,
      xlab = 'Time (min)',
      ylab = 'single factors')
+grid()
 points(t,out3[,(m11e + 1)], type = 'l', col = 'red')
 points(t,out3[,(m11e + 2)], type= 'l', col = 'blue')
+points(t,out3[,(m11e + 3)], type= 'l', col = 'seagreen')
+legend('topright', c('-1', '0','+1','+2'), lwd = 2, col = c('black','red','blue','seagreen'), bty = 'n')
 
-
-plot(t,out4[,m11e], type = 'l', main='a = 0.5', ylim = ylim,
+plot(t,out4[,(m11e - 0)], type = 'l', main='a = 0.5', ylim = ylim,
      xlim = xlim,
      xlab = 'Time (min)',
      ylab = 'single factors')
+grid()
 points(t,out4[,(m11e + 1)], type = 'l', col = 'red')
 points(t,out4[,(m11e + 2)], type= 'l', col = 'blue')
+points(t,out4[,(m11e + 3)], type= 'l', col = 'seagreen')
+legend('topright', c('-1', '0','+1','+2'), lwd = 2, col = c('black','red','blue','seagreen'), bty = 'n')
 
-
-plot(t,out5[,m11e], type = 'l', main='a = 0.1', ylim = ylim,
+plot(t,out5[,(m11e - 0)], type = 'l', main='a = 0.1', ylim = ylim,
      xlim = xlim,
      xlab = 'Time (min)',
      ylab = 'single factors')
+grid()
 points(t,out5[,(m11e + 1)], type = 'l', col = 'red')
 points(t,out5[,(m11e + 2)], type= 'l', col = 'blue')
+points(t,out5[,(m11e + 3)], type= 'l', col = 'seagreen')
+legend('topright', c('-1', '0','+1','+2'), lwd = 2, col = c('black','red','blue','seagreen'), bty = 'n')
+
+plot(t,out6[,(m11e - 0)], type = 'l', main='a = 0.01', ylim = ylim,
+     xlim = xlim,
+     xlab = 'Time (min)',
+     ylab = 'single factors')
+grid()
+points(t,out6[,(m11e + 1)], type = 'l', col = 'red')
+points(t,out6[,(m11e + 2)], type= 'l', col = 'blue')
+points(t,out6[,(m11e + 3)], type= 'l', col = 'seagreen')
+legend('topright', c('-1', '0','+1','+2'), lwd = 2, col = c('black','red','blue','seagreen'), bty = 'n')
+dev.off()
+#-------------------------------------------------------------------------------
+pdf('~/Desktop/lemaireOS/Figues/singleComponentsRates.pdf', width = 11.7, height = 8)
+par(mfrow = c(2,2), cex = 1.0)
+ylim1 = c(0,10)
+ylim2 = c(0,100)
+xlim = c(0,200)
+#col = gray(1:6/6)
+col = c('black','darkblue', 'purple','royalblue','slateblue','lightblue')
+plot(t,out1[,(m11e - 0)], type = 'l', main='-1', ylim = ylim1,col = col[1],
+     xlim = xlim,
+     xlab = 'Time (min)',
+     ylab = 'single factors')
+grid()
+points(t,out2[,(m11e - 0)], type = 'l', col = col[2])
+points(t,out3[,(m11e - 0)], type = 'l', col = col[3])
+points(t,out4[,(m11e - 0)], type = 'l', col = col[4])
+points(t,out5[,(m11e - 0)], type = 'l', col = col[5])
+points(t,out6[,(m11e - 0)], type = 'l', col = col[6])
+
+legend('topright', c('a = 5','a = 2.5', 'a = 1', 'a = 0.5', 'a = 0.1', 'a = 0.01'), lwd = 2, col = col, bty = 'n')
+
+plot(t,out1[,(m11e + 1)], type = 'l', main='0', ylim = ylim2,col = col[1],
+     xlim = xlim,
+     xlab = 'Time (min)',
+     ylab = 'single factors')
+grid()
+points(t,out2[,(m11e + 1)], type = 'l', col = col[2])
+points(t,out3[,(m11e + 1)], type = 'l', col = col[3])
+points(t,out4[,(m11e + 1)], type = 'l', col = col[4])
+points(t,out5[,(m11e + 1)], type = 'l', col = col[5])
+points(t,out6[,(m11e + 1)], type = 'l', col = col[6])
+
+legend('topright', c('a = 5','a = 2.5', 'a = 1', 'a = 0.5', 'a = 0.1', 'a = 0.01'), lwd = 2, col = col, bty = 'n')
+
+plot(t,out1[,(m11e + 2)], type = 'l', main='+1', ylim = ylim1,col = col[1],
+     xlim = xlim,
+     xlab = 'Time (min)',
+     ylab = 'single factors')
+grid()
+points(t,out2[,(m11e + 2)], type = 'l', col = col[2])
+points(t,out3[,(m11e + 2)], type = 'l', col = col[3])
+points(t,out4[,(m11e + 2)], type = 'l', col = col[4])
+points(t,out5[,(m11e + 2)], type = 'l', col = col[5])
+points(t,out6[,(m11e + 2)], type = 'l', col = col[6])
+
+legend('topright', c('a = 5','a = 2.5', 'a = 1', 'a = 0.5', 'a = 0.1', 'a = 0.01'), lwd = 2, col = col, bty = 'n')
+
+plot(t,out1[,(m11e + 3)], type = 'l', main='+2', ylim = ylim1,col = col[1],
+     xlim = xlim,
+     xlab = 'Time (min)',
+     ylab = 'single factors')
+grid()
+points(t,out2[,(m11e + 3)], type = 'l', col = col[2])
+points(t,out3[,(m11e + 3)], type = 'l', col = col[3])
+points(t,out4[,(m11e + 3)], type = 'l', col = col[4])
+points(t,out5[,(m11e + 3)], type = 'l', col = col[5])
+points(t,out6[,(m11e + 3)], type = 'l', col = col[6])
+
+legend('topright', c('a = 5','a = 2.5', 'a = 1', 'a = 0.5', 'a = 0.1', 'a = 0.01'), lwd = 2, col = col, bty = 'n')
+dev.off()
 #-------------------------------------------------------------------------------
 #plot time series of mRNA abundace for different Er-alpha reaction rates
 #half life of the mRna in minutes

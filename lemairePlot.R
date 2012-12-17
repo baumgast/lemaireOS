@@ -1,7 +1,7 @@
-xlim = c(40,max(times))
-ylim = c(0,4)
-
-par(mfrow = c(1,1))
+pdf('~/Desktop/lemaireOS/Figues/allReactions.pdf', height = 8.3, width = 11.7)
+par(mfrow = c(2,3), cex = 1.0)
+xlim = c(0,1000)
+ylim = c(0,20)
 
 plot.new()
 plot.window(xlim,ylim)
@@ -10,13 +10,92 @@ axis(2)
 grid()
 box()
 
-title(main = '',
+title(main = 'a = 5',
       xlab = 'Time (min)',
       ylab = 'Relative concentration (percent)')
 
-plots = seq(2,100,10)
-matpoints(out1[,1],out1[,plots], type = 'l', lty = 1)
-legend('topright', as.character(plots - 1), col = 1:length(plots),lty = 1, bty = 'n')
+plots = seq(2,200,1)
+col = rainbow(length(plots))
+matpoints(out1[,1],out1[,plots], type = 'l', lty = 1, col = col)
+
+plot.new()
+plot.window(xlim,ylim)
+axis(1)
+axis(2)
+grid()
+box()
+
+title(main = 'a = 2.5',
+      xlab = 'Time (min)',
+      ylab = 'Relative concentration (percent)')
+
+plots = seq(2,200,1)
+col = rainbow(length(plots))
+matpoints(out1[,1],out2[,plots], type = 'l', lty = 1, col = col)
+
+plot.new()
+plot.window(xlim,ylim)
+axis(1)
+axis(2)
+grid()
+box()
+
+title(main = 'a = 1',
+      xlab = 'Time (min)',
+      ylab = 'Relative concentration (percent)')
+
+plots = seq(2,200,1)
+col = rainbow(length(plots))
+matpoints(out1[,1],out3[,plots], type = 'l', lty = 1, col = col)
+
+plot.new()
+plot.window(xlim,ylim)
+axis(1)
+axis(2)
+grid()
+box()
+
+title(main = 'a = 0.5',
+      xlab = 'Time (min)',
+      ylab = 'Relative concentration (percent)')
+
+plots = seq(2,200,1)
+col = rainbow(length(plots))
+matpoints(out1[,1],out4[,plots], type = 'l', lty = 1, col = col)
+
+ylim = c(0,30)
+plot.new()
+plot.window(xlim,ylim)
+axis(1)
+axis(2)
+grid()
+box()
+
+title(main = 'a = 0.1',
+      xlab = 'Time (min)',
+      ylab = 'Relative concentration (percent)')
+
+plots = seq(2,200,1)
+col = rainbow(length(plots))
+matpoints(out1[,1],out5[,plots], type = 'l', lty = 1, col = col)
+
+ylim = c(0,130)
+plot.new()
+plot.window(xlim,ylim)
+axis(1)
+axis(2)
+grid()
+box()
+
+title(main = 'a = 0.01',
+      xlab = 'Time (min)',
+      ylab = 'Relative concentration (percent)')
+
+plots = seq(2,200,1)
+col = rainbow(length(plots))
+matpoints(out1[,1],out6[,plots], type = 'l', lty = 1, col = col)
+#legend('topright', as.character(plots - 1), col = 1:length(plots),lty = 1, bty = 'n')
+dev.off()
 #------------------------------------------------------------------------------
 #summing certain components x_i
 #components:
